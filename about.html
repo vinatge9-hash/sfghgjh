@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" class="antialiased">
+<head>
+  <!-- Font placeholders -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About — Brew Haven</title>
+  <meta name="description" content="About Brew Haven — our history, founders, and sustainable sourcing. Located in Hyderabad.">
+  <script>
+    tailwind = { config: { theme: { extend: { colors: { 'brew-brown': '#3b2f2f', 'brew-cream': '#f6efe6', 'brew-beige': '#dccdb3', 'brew-green': '#7b936f' } } } } }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @layer utilities { .animate-fade-in { animation: fadeIn 700ms ease-out both; } @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } } }
+  </style>
+</head>
+<body class="bg-brew-cream text-brew-brown min-h-screen transition-opacity duration-700 opacity-0" style="font-family: 'Inter', sans-serif;">
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/60 border-b">
+    <nav class="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-[url('https://images.pexels.com/photos/9899789/pexels-photo-9899789.jpeg?auto=compress&cs=tinysrgb&h=650&w=940')] bg-cover rounded-full"></div>
+        <div style="font-family: 'Playfair Display', serif;">Brew Haven</div>
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-sm">Home</a>
+        <a href="menu.html" class="text-sm">Menu</a>
+        <a href="about.html" class="text-sm">About</a>
+        <a href="shop.html" class="text-sm">Shop</a>
+        <a href="blog.html" class="text-sm">Blog</a>
+        <a href="contact.html" class="text-sm">Contact</a>
+      </div>
+      <div class="md:hidden"> </div>
+    </nav>
+  </header>
+
+  <main class="max-w-screen-xl mx-auto px-6 py-12">
+    <h1 class="text-3xl mb-4" style="font-family: 'Pacifico', cursive;">Our Journey</h1>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <div class="space-y-4 opacity-0" data-animate>
+        <h2 class="text-xl font-semibold" style="font-family: 'Playfair Display', serif;">From a small dream to a community hub</h2>
+        <p>Founded by two friends in Hyderabad, Brew Haven started as a simple pursuit: to make thoughtfully-sourced, well-roasted coffee accessible and inviting. We believe in quality, craft, and the joy of slowing down with a great cup.</p>
+        <p>We roast locally, support smallholder farmers, and work to ensure fair practices across our supply chain.</p>
+      </div>
+      <div class="opacity-0" data-animate>
+        <img src="https://images.pexels.com/photos/18995446/pexels-photo-18995446.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Shop interior" class="w-full h-72 object-cover rounded-lg shadow" />
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h3 class="text-2xl mb-4" style="font-family: 'Playfair Display', serif;">Founders</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <article class="bg-white p-4 rounded-lg shadow opacity-0" data-animate>
+          <img src="https://images.unsplash.com/photo-1659998012676-2769e22b8e43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw3fHxmb3VuZGVyJTIwcG9ydHJhaXQlMjBzbWlsaW5nfGVufDB8MHx8fDE3NTcwNzk3MzB8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Founder portrait" class="w-full h-40 object-cover rounded-md" />
+          <h4 class="mt-3 font-semibold">Ananya & Vikram</h4>
+          <p class="text-sm text-gray-700">Passionate about coffee and community, they opened Brew Haven to create a gathering place for craft coffee in Hyderabad.</p>
+        </article>
+
+        <article class="bg-white p-4 rounded-lg shadow opacity-0" data-animate>
+          <img src="https://images.unsplash.com/photo-1564564965089-38d0513a78e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw0fHx0ZWFtJTIwYXQlMjByb2FzdGluZyUyMG1hY2hpbmV8ZW58MHwwfHx8MTc1NzA3OTczMXww&ixlib=rb-4.1.0&q=80&w=1080" alt="Team at roasting" class="w-full h-40 object-cover rounded-md" />
+          <h4 class="mt-3 font-semibold">Roasting Team</h4>
+          <p class="text-sm text-gray-700">Our roasters focus on small-batch quality and transparency in sourcing.</p>
+        </article>
+
+        <article class="bg-white p-4 rounded-lg shadow opacity-0" data-animate>
+          <img src="https://pixabay.com/get/g713762e8cda4a42986aab95f776f903de314b23400f2cf03c4176d512d4edc3da607eff4c51fa80a8ea373869f667ab9f5f161fdb998cbe316ac283d30098b3d_640.jpg" alt="Barista training" class="w-full h-40 object-cover rounded-md" />
+          <h4 class="mt-3 font-semibold">Baristas & Service</h4>
+          <p class="text-sm text-gray-700">We invest in training so every cup is consistent and welcoming.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h3 class="text-2xl mb-4" style="font-family: 'Playfair Display', serif;">Mission & Values</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded-lg shadow opacity-0" data-animate>
+          <h4 class="font-semibold">Community</h4>
+          <p class="text-sm text-gray-700">A welcoming space for conversations, meetups, and local events.</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow opacity-0" data-animate>
+          <h4 class="font-semibold">Sustainability</h4>
+          <p class="text-sm text-gray-700">Ethical sourcing, minimal waste, and local roasting to reduce our footprint.</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow opacity-0" data-animate>
+          <h4 class="font-semibold">Craft</h4>
+          <p class="text-sm text-gray-700">Every cup is prepared with attention and care.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-stone-800 text-gray-300 py-6 text-center">&copy; 2025 Brew Haven — Hyderabad, Telangana</footer>
+
+  <script>
+    document.body.classList.remove('opacity-0');
+    document.body.classList.add('animate-fade-in');
+    const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.remove('opacity-0'); e.target.classList.add('animate-fade-in'); obs.unobserve(e.target); } }); },{threshold:0.12});
+    document.querySelectorAll('[data-animate]').forEach(el=>{ el.classList.add('opacity-0'); obs.observe(el); });
+  </script>
+</body>
+</html> 
