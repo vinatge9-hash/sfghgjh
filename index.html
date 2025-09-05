@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en" class="antialiased">
+<head>
+  <!-- Font placeholders (load all fonts) -->
+  <!-- Font: Inter -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Font: Pacifico (handwritten accent) -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <!-- Font: Playfair Display (elegant serif) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Brew Haven — Crafted Coffee, Cozy Moments</title>
+  <meta name="description" content="Brew Haven — a warm, cozy, premium coffee shop in Hyderabad. Order online or visit us for crafted coffee, pastries, and community events.">
+
+  <script>
+    // Tailwind config (colors, fonts)
+    tailwind = {
+      config: {
+        theme: {
+          extend: {
+            colors: {
+              'brew-brown': '#3b2f2f',
+              'brew-cream': '#f6efe6',
+              'brew-beige': '#dccdb3',
+              'brew-green': '#7b936f'
+            },
+            fontFamily: {
+              inter: ['Inter', 'sans-serif'],
+              pacifico: ['Pacifico', 'cursive'],
+              playfair: ['Playfair Display', 'serif']
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Swiper (Testimonials slider) -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+
+  <style>
+    /* Custom Tailwind-style utilities for animations (used via Tailwind utility approach) */
+    @layer utilities {
+      .animate-fade-in { animation: fadeIn 700ms ease-out both; }
+      .animate-fade-up { animation: fadeUp 700ms ease-out both; }
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    }
+  </style>
+
+</head>
+<body class="bg-brew-cream text-brew-brown min-h-screen leading-relaxed transition-opacity duration-700 opacity-0" style="font-family: 'Inter', sans-serif;">
+
+  <!-- Page wrapper to ensure full-width content while keeping inner readable container -->
+  <div id="page" class="w-full">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 backdrop-blur bg-white/60 dark:bg-slate-900/60 border-b border-b-amber-50/10">
+      <nav class="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-[url('https://images.unsplash.com/photo-1647960325995-d2635727f115?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHwxfHxjb2ZmZWUlMjBiZWFuJTIwbG9nbyUyMHJvdW5kfGVufDB8MHx8fDE3NTcwNzk3MTB8MA&ixlib=rb-4.1.0&q=80&w=1080')] bg-cover rounded-full shadow-sm"></div>
+          <div>
+            <div class="text-lg font-playfair" style="font-family: 'Playfair Display', serif;">Brew Haven</div>
+            <div class="text-xs text-gray-600">Crafted Coffee, Cozy Moments</div>
+          </div>
+        </a>
+
+        <div class="hidden md:flex items-center gap-6">
+          <a href="index.html" class="text-sm hover:text-brew-green transition">Home</a>
+          <a href="menu.html" class="text-sm hover:text-brew-green transition">Menu</a>
+          <a href="about.html" class="text-sm hover:text-brew-green transition">About</a>
+          <a href="shop.html" class="text-sm hover:text-brew-green transition">Shop</a>
+          <a href="blog.html" class="text-sm hover:text-brew-green transition">Blog</a>
+          <a href="contact.html" class="text-sm hover:text-brew-green transition">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <!-- Cart icon (inline SVG) -->
+          <button aria-label="Cart" class="p-2 rounded-md hover:bg-brew-beige transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-brew-brown" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 6m5-6v6m4-6v6m1 0a1 1 0 100 2 1 1 0 000-2m-8 0a1 1 0 100 2 1 1 0 000-2" />
+            </svg>
+          </button>
+
+          <!-- Mobile hamburger -->
+          <button id="menuBtn" class="md:hidden p-2 rounded-md hover:bg-brew-beige transition" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-brew-brown" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden border-t">
+        <div class="px-6 py-4 flex flex-col gap-3">
+          <a href="index.html" class="py-2">Home</a>
+          <a href="menu.html" class="py-2">Menu</a>
+          <a href="about.html" class="py-2">About</a>
+          <a href="shop.html" class="py-2">Shop</a>
+          <a href="blog.html" class="py-2">Blog</a>
+          <a href="contact.html" class="py-2">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero: Full-width background image/video with overlay -->
+      <section class="relative w-full h-screen bg-fixed bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1735657609176-44d212d27a84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw3fHxsYXR0ZSUyMGFydCUyMHBvdXJpbmclMjBjbG9zZS11cCUyMHdpdGglMjB3YXJtJTIwd29vZCUyMGJhY2tncm91bmR8ZW58MHwwfHx8MTc1NzA3OTcxMXww&ixlib=rb-4.1.0&q=80&w=1080');">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/25 to-transparent"></div>
+        <div class="relative max-w-screen-xl mx-auto px-6 h-full flex items-center">
+          <div class="text-white max-w-2xl">
+            <h1 class="text-4xl md:text-6xl font-playfair leading-tight drop-shadow-lg" style="font-family: 'Pacifico', cursive;">Brew Haven – Crafted Coffee, Cozy Moments</h1>
+            <p class="mt-4 text-lg md:text-xl text-white/90">Handcrafted espresso, sustainably sourced beans, and cozy corners — welcome to your daily ritual in Hyderabad.</p>
+            <div class="mt-6 flex gap-3">
+              <a href="shop.html" class="inline-block px-5 py-3 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-brew-brown to-brew-green shadow-md hover:scale-[1.02] transition-transform duration-200">Order Online</a>
+              <a href="menu.html" class="inline-block px-5 py-3 rounded-full text-sm font-semibold bg-white/90 text-brew-brown hover:bg-white transition">View Menu</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- subtle parallax layer (decorative beans) -->
+        <div class="absolute bottom-6 right-6 opacity-70 hidden md:block">
+          <img src="https://images.pexels.com/photos/1419931/pexels-photo-1419931.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Coffee beans on wooden table" class="w-36 h-36 object-cover rounded-md shadow-lg" />
+        </div>
+      </section>
+
+      <!-- About Preview -->
+      <section class="py-16 bg-brew-cream" id="about-preview">
+        <div class="max-w-screen-xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4 opacity-0 translate-y-6" data-animate>
+            <h2 class="text-2xl font-semibold" style="font-family: 'Playfair Display', serif;">Our Story</h2>
+            <p class="text-gray-700">Brew Haven began as a small passion project by two friends in Hyderabad who wanted to craft approachable yet refined coffee experiences. We roast thoughtfully, brew with care, and welcome everyone who loves good coffee.</p>
+            <a href="about.html" class="inline-block mt-2 text-sm font-medium px-4 py-2 rounded-md bg-brew-brown text-brew-cream hover:brightness-95 transition">Read Our Story</a>
+          </div>
+
+          <div class="opacity-0 translate-y-6" data-animate>
+            <img src="https://pixabay.com/get/g03009f7a7121f7eb1fef1f9df70d0e74c0eca3d50d4eb585ec00198227f579ed7853dc8ef991ddccb4f26e797d0ad7aa_640.jpg" alt="Baristas preparing espresso" class="w-full h-64 object-cover rounded-lg shadow-lg" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Menu Items -->
+      <section class="py-16 bg-white">
+        <div class="max-w-screen-xl mx-auto px-6">
+          <h2 class="text-2xl mb-6" style="font-family: 'Playfair Display', serif;">Featured Drinks</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Item: Espresso -->
+            <article class="bg-white/60 backdrop-blur-lg rounded-lg p-4 shadow-md opacity-0 translate-y-6" data-animate>
+              <img src="https://images.pexels.com/photos/4195608/pexels-photo-4195608.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Espresso shot" class="w-full h-44 object-cover rounded-md" />
+              <div class="mt-3">
+                <h3 class="font-semibold">Espresso</h3>
+                <p class="text-sm text-gray-600">Intense, concentrated, perfectly pulled.</p>
+                <div class="mt-3 flex items-center justify-between">
+                  <div class="text-lg font-semibold">₹120</div>
+                  <a href="shop.html" class="px-3 py-1 rounded-md bg-brew-green text-white text-sm hover:opacity-90 transition">Order Now</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Item: Latte -->
+            <article class="bg-white/60 backdrop-blur-lg rounded-lg p-4 shadow-md opacity-0 translate-y-6" data-animate>
+              <img src="https://pixabay.com/get/gc1f5d3122b0a227ff63b914b6f839fecfb2a58a055d7865b9e1bea8fc48ba5b66a11d0867ff308c37c141a19d22ffa7f186a4d415b911bcbc0dc2eb73e57be57_640.jpg" alt="Latte with heart latte art" class="w-full h-44 object-cover rounded-md" />
+              <div class="mt-3">
+                <h3 class="font-semibold">Latte</h3>
+                <p class="text-sm text-gray-600">Silky steamed milk with a mellow espresso base.</p>
+                <div class="mt-3 flex items-center justify-between">
+                  <div class="text-lg font-semibold">₹170</div>
+                  <a href="shop.html" class="px-3 py-1 rounded-md bg-brew-green text-white text-sm hover:opacity-90 transition">Order Now</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Item: Cappuccino -->
+            <article class="bg-white/60 backdrop-blur-lg rounded-lg p-4 shadow-md opacity-0 translate-y-6" data-animate>
+              <img src="https://images.pexels.com/photos/264487/pexels-photo-264487.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Cappuccino with cocoa" class="w-full h-44 object-cover rounded-md" />
+              <div class="mt-3">
+                <h3 class="font-semibold">Cappuccino</h3>
+                <p class="text-sm text-gray-600">Balanced espresso, velvety foam, classic finish.</p>
+                <div class="mt-3 flex items-center justify-between">
+                  <div class="text-lg font-semibold">₹160</div>
+                  <a href="shop.html" class="px-3 py-1 rounded-md bg-brew-green text-white text-sm hover:opacity-90 transition">Order Now</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Item: Cold Brew -->
+            <article class="bg-white/60 backdrop-blur-lg rounded-lg p-4 shadow-md opacity-0 translate-y-6" data-animate>
+              <img src="https://images.unsplash.com/photo-1643068477451-2509a7e079ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw2fHxjb2xkJTIwYnJldyUyMGluJTIwdGFsbCUyMGdsYXNzJTIwd2l0aCUyMGljZXxlbnwwfDB8fHwxNzU3MDc5NzE5fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Cold Brew" class="w-full h-44 object-cover rounded-md" />
+              <div class="mt-3">
+                <h3 class="font-semibold">Cold Brew</h3>
+                <p class="text-sm text-gray-600">Slow-steeped for a smooth, low-acid cup.</p>
+                <div class="mt-3 flex items-center justify-between">
+                  <div class="text-lg font-semibold">₹190</div>
+                  <a href="shop.html" class="px-3 py-1 rounded-md bg-brew-green text-white text-sm hover:opacity-90 transition">Order Now</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Item: Seasonal Special -->
+            <article class="bg-white/60 backdrop-blur-lg rounded-lg p-4 shadow-md opacity-0 translate-y-6" data-animate>
+              <img src="https://pixabay.com/get/gd3b3df8e4aa1392bc1b58fdd3cbb876364dee30f9a8974f415b285c70326ffba231d03072c43b1714a77d0831a0968ad673c8222c830ab7e5cfbeba2316f0ca7_640.jpg" alt="Seasonal spiced latte" class="w-full h-44 object-cover rounded-md" />
+              <div class="mt-3">
+                <h3 class="font-semibold">Seasonal Special</h3>
+                <p class="text-sm text-gray-600">Limited-time crafted flavor. Ask barista for details.</p>
+                <div class="mt-3 flex items-center justify-between">
+                  <div class="text-lg font-semibold">₹210</div>
+                  <a href="shop.html" class="px-3 py-1 rounded-md bg-brew-green text-white text-sm hover:opacity-90 transition">Order Now</a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials (Swiper) -->
+      <section class="py-16 bg-brew-beige">
+        <div class="max-w-screen-xl mx-auto px-6">
+          <h2 class="text-2xl mb-6" style="font-family: 'Playfair Display', serif;">What our customers say</h2>
+
+          <div class="swiper-container">
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper">
+                <!-- Testimonial 1 -->
+                <div class="swiper-slide p-4">
+                  <div class="bg-white rounded-lg p-6 shadow-md flex gap-4 items-start">
+                    <img src="https://images.unsplash.com/photo-1703759354716-b777fd195508?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw1fHxzbWlsaW5nJTIwY3VzdG9tZXIlMjBwb3J0cmFpdHxlbnwwfDB8fHwxNzU3MDc5NzIwfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Customer photo" class="w-16 h-16 object-cover rounded-full" />
+                    <div>
+                      <p class="font-semibold">Asha R.</p>
+                      <p class="text-sm text-gray-700 mt-2">"The cold brew is so smooth — perfect for Hyderabad's warm afternoons. Cozy atmosphere and friendly staff!"</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="swiper-slide p-4">
+                  <div class="bg-white rounded-lg p-6 shadow-md flex gap-4 items-start">
+                    <img src="https://pixabay.com/get/gf923fded4e172519038590a42dc8339ab0ddbaaa913e053b49135c80294e2aa0327cf7397529ea7b7a0e9ca2698fc99c436de626e5878aac7096c9b130610cae_640.jpg" alt="Customer enjoying latte" class="w-16 h-16 object-cover rounded-full" />
+                    <div>
+                      <p class="font-semibold">Rahul S.</p>
+                      <p class="text-sm text-gray-700 mt-2">"Lovely beans and mindful sourcing — their espresso is consistent and deep."</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="swiper-slide p-4">
+                  <div class="bg-white rounded-lg p-6 shadow-md flex gap-4 items-start">
+                    <img src="https://images.pexels.com/photos/6972784/pexels-photo-6972784.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Customer smiling with coffee" class="w-16 h-16 object-cover rounded-full" />
+                    <div>
+                      <p class="font-semibold">Nina P.</p>
+                      <p class="text-sm text-gray-700 mt-2">"A go-to spot for weekend catchups. The pastries pair beautifully with their single-origin brews."</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!-- Add Pagination -->
+              <div class="swiper-pagination mt-4"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Photo Gallery -->
+      <section class="py-16 bg-white">
+        <div class="max-w-screen-xl mx-auto px-6">
+          <h2 class="text-2xl mb-6" style="font-family: 'Playfair Display', serif;">Gallery</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 opacity-0 translate-y-6" data-animate>
+            <img src="https://images.unsplash.com/photo-1718459973508-28497c57af7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw1fHxjbG9zZS11cCUyMGxhdHRlJTIwYXJ0JTIwZm9hbSUyMGhlYXJ0fGVufDB8MHx8fDE3NTcwNzk3MjN8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Latte art heart" class="w-full h-40 object-cover rounded-lg shadow-sm" />
+            <img src="https://pixabay.com/get/g55cf8bb22a410c7dd9111878de2cde3ddd0d8750c99b79dd487cea44c2ff821ab1f33b72522eb8e60dbf98f0f0a8cdc9_640.jpg" alt="Cozy interior with wooden tables" class="w-full h-40 object-cover rounded-lg shadow-sm" />
+            <img src="https://images.unsplash.com/photo-1719268920425-12d67da473bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw3fHxyb2FzdGVkJTIwY29mZmVlJTIwYmVhbnMlMjBzcGlsbGluZ3xlbnwwfDB8fHwxNzU3MDc5NzI0fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Roasted coffee beans" class="w-full h-40 object-cover rounded-lg shadow-sm" />
+            <img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Barista pouring milk" class="w-full h-40 object-cover rounded-lg shadow-sm" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Visit Us: Map and Hours -->
+      <section class="py-16 bg-brew-cream">
+        <div class="max-w-screen-xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+          <div class="opacity-0 translate-y-6" data-animate>
+            <h3 class="text-xl font-semibold">Visit Brew Haven</h3>
+            <p class="mt-2 text-gray-700">Find us in the heart of Hyderabad — warm coffee, friendly faces, and community gatherings.</p>
+
+            <div class="mt-4 text-sm text-gray-700">
+              <p class="font-semibold">Address</p>
+              <p>Brew Haven, Jubilee Hills Road No. 36, Hyderabad, Telangana 500033, India</p>
+
+              <p class="mt-3 font-semibold">Opening Hours</p>
+              <ul>
+                <li>Mon–Fri: 7:00 AM — 8:00 PM</li>
+                <li>Sat–Sun: 8:00 AM — 9:00 PM</li>
+              </ul>
+
+              <p class="mt-3 font-semibold">Contact</p>
+              <p>Phone: +91 40 1234 5678</p>
+              <p>Email: hello@brewhaven.in</p>
+
+            </div>
+
+          </div>
+
+          <div class="opacity-0 translate-y-6" data-animate>
+            <!-- Embedded Google Map (Hyderabad placeholder) -->
+            <iframe class="w-full h-64 rounded-lg shadow-md" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.333594451225!2d78.40292701504298!3d17.427131888027563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9736a2c1f5d1%3A0xf4fb1a5f7a5b9f3a!2sJubilee%20Hills%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v0000000000000" title="Brew Haven Location in Hyderabad"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter Signup (glassmorphism) -->
+      <section class="py-12">
+        <div class="max-w-screen-xl mx-auto px-6">
+          <div class="bg-white/30 backdrop-blur-lg rounded-lg shadow-lg p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+              <h3 class="text-lg font-semibold" style="font-family: 'Pacifico', cursive;">Join our coffee lovers community</h3>
+              <p class="text-sm text-gray-700 mt-1">Get seasonal menus, brewing tips, and events.</p>
+            </div>
+            <form class="flex w-full md:w-auto gap-2" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+              <label for="email" class="sr-only">Email</label>
+              <input id="email" type="email" required placeholder="Your email" class="px-4 py-2 rounded-md border border-gray-200 focus:outline-none" />
+              <button type="submit" class="px-4 py-2 rounded-md bg-gradient-to-r from-brew-brown to-brew-green text-white font-semibold">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-800 text-gray-300 mt-12">
+      <div class="max-w-screen-xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Column 1: Brand & Socials -->
+        <div style="font-family: 'Playfair Display', serif;">
+          <h3 class="text-2xl text-white">Brew Haven</h3>
+          <p class="mt-2 text-sm">Crafted Coffee · Community · Sustainability</p>
+          <div class="mt-4 flex gap-3">
+            <!-- Social links with inline SVGs -->
+            <a href="#" aria-label="Instagram" class="hover:text-white transition">
+              <!-- Instagram (heroicon-like) -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.5"></rect>
+                <circle cx="12" cy="12" r="3" stroke-width="1.5"></circle>
+                <path d="M16.5 7.5h.01" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </a>
+            <a href="#" aria-label="Facebook" class="hover:text-white transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22 12a10 10 0 10-11.5 9.9v-7H8v-3h2.5V9.2c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.3 0-1.7.8-1.7 1.7V12H19l-.5 3.9h-2.3v7A10 10 0 0022 12z"/>
+              </svg>
+            </a>
+            <a href="#" aria-label="TikTok" class="hover:text-white transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-300" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.5 5.5c-.8 0-1.6-.1-2.3-.3v6.8c0 1.9-1.6 3.5-3.5 3.5-2 0-3.5-1.6-3.5-3.5S9.7 9 11.7 9c.2 0 .4 0 .6.1V6.4c-.3-.1-.6-.1-.9-.1-3.2 0-5.9 2.6-5.9 5.9s2.6 5.9 5.9 5.9 5.9-2.6 5.9-5.9V5.5h-0z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div>
+          <h4 class="text-white font-semibold">Quick Links</h4>
+          <ul class="mt-4 space-y-2 text-sm">
+            <li><a href="menu.html" class="hover:text-white transition">Menu</a></li>
+            <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+            <li><a href="shop.html" class="hover:text-white transition">Shop</a></li>
+            <li><a href="contact.html" class="hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Newsletter -->
+        <div>
+          <h4 class="text-white font-semibold">Newsletter</h4>
+          <p class="text-sm mt-2">Get seasonal updates and brewing tips.</p>
+          <form class="mt-4 flex gap-2" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+            <label for="footer-email" class="sr-only">Email</label>
+            <input id="footer-email" type="email" placeholder="you@domain.com" class="px-3 py-2 rounded-md bg-stone-700 text-gray-200 border border-stone-600 focus:outline-none" />
+            <button class="px-3 py-2 rounded-md bg-gradient-to-r from-brew-brown to-brew-green text-white">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="border-t border-stone-700">
+        <div class="max-w-screen-xl mx-auto px-6 py-6 text-center text-sm text-gray-400">&copy; 2025 Brew Haven — Hyderabad, Telangana · All rights reserved.</div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script>
+    // Page load fade-in
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.remove('opacity-0');
+      document.body.classList.add('animate-fade-in');
+
+      // Simple scroll animations using Tailwind utility classes
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0','translate-y-6');
+            entry.target.classList.add('opacity-100','translate-y-0','animate-fade-up');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('[data-animate]').forEach(el => {
+        el.classList.add('opacity-0','translate-y-6');
+        observer.observe(el);
+      });
+
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Initialize Swiper
+    const swiper = new Swiper('.mySwiper', {
+      loop: true,
+      pagination: { el: '.swiper-pagination', clickable: true },
+      autoplay: { delay: 5000 },
+      slidesPerView: 1,
+      spaceBetween: 20
+    });
+
+  </script>
+</body>
+</html> 
