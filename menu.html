@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" class="antialiased">
+<head>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Menu — Brew Haven</title>
+  <meta name="description" content="Full Brew Haven menu — hot coffees, cold brews, pastries, seasonal specials. Located in Hyderabad.">
+  <script> tailwind = { config: { theme: { extend: { colors: { 'brew-brown': '#3b2f2f', 'brew-cream': '#f6efe6', 'brew-beige': '#dccdb3', 'brew-green': '#7b936f' } } } } }</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-brew-cream text-brew-brown min-h-screen" style="font-family: 'Inter', sans-serif;">
+  <header class="bg-white/60 sticky top-0 border-b">
+    <nav class="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" style="font-family: 'Playfair Display', serif;">Brew Haven</a>
+      <div class="hidden md:flex gap-6">
+        <a href="menu.html">Menu</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-screen-xl mx-auto px-6 py-12">
+    <h1 class="text-3xl mb-6" style="font-family: 'Pacifico', cursive;">Full Menu</h1>
+
+    <!-- Filters (static UI; no complex JS needed) -->
+    <div class="mb-6 flex gap-3 flex-wrap">
+      <button class="px-3 py-1 rounded-md bg-white border">All</button>
+      <button class="px-3 py-1 rounded-md">Hot</button>
+      <button class="px-3 py-1 rounded-md">Cold</button>
+      <button class="px-3 py-1 rounded-md">Vegan</button>
+      <button class="px-3 py-1 rounded-md">Seasonal</button>
+    </div>
+
+    <!-- Hot Coffees -->
+    <section class="mb-10">
+      <h2 class="text-2xl mb-4" style="font-family: 'Playfair Display', serif;">Hot Coffees</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Full static list items -->
+        <article class="bg-white p-4 rounded-lg shadow">
+          <div class="flex gap-4">
+            <img src="https://images.pexels.com/photos/2872747/pexels-photo-2872747.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Espresso" class="w-28 h-20 object-cover rounded-md" />
+            <div>
+              <h3 class="font-semibold">Espresso <span class="text-gray-600">₹120</span></h3>
+              <p class="text-sm text-gray-700">A single, perfect shot — intense and aromatic.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white p-4 rounded-lg shadow">
+          <div class="flex gap-4">
+            <img src="https://images.pexels.com/photos/207287/pexels-photo-207287.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Latte" class="w-28 h-20 object-cover rounded-md" />
+            <div>
+              <h3 class="font-semibold">Latte <span class="text-gray-600">₹170</span></h3>
+              <p class="text-sm text-gray-700">Creamy steamed milk over smooth espresso.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white p-4 rounded-lg shadow">
+          <div class="flex gap-4">
+            <img src="https://images.pexels.com/photos/414630/pexels-photo-414630.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Cappuccino" class="w-28 h-20 object-cover rounded-md" />
+            <div>
+              <h3 class="font-semibold">Cappuccino <span class="text-gray-600">₹160</span></h3>
+              <p class="text-sm text-gray-700">Balanced espresso with a full-bodied foam.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Cold Brews -->
+    <section class="mb-10">
+      <h2 class="text-2xl mb-4" style="font-family: 'Playfair Display', serif;">Cold Brews</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <article class="bg-white p-4 rounded-lg shadow">
+          <div class="flex gap-4">
+            <img src="https://pixabay.com/get/gfb251ffcedb0fc0cb782c13fcd69dbfc649ca2cc49695586e6dbe6047f44e45d5552b26d1f15f02e1c8fa09e8018094d2dda658a54c6f69585c554fd2d82bd95_640.jpg" alt="Cold Brew" class="w-28 h-20 object-cover rounded-md" />
+            <div>
+              <h3 class="font-semibold">Cold Brew <span class="text-gray-600">₹190</span></h3>
+              <p class="text-sm text-gray-700">Slow-steeped for low acidity and smooth flavor.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Pastries -->
+    <section class="mb-10">
+      <h2 class="text-2xl mb-4" style="font-family: 'Playfair Display', serif;">Pastries</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <article class="bg-white p-4 rounded-lg shadow">
+          <div class="flex gap-4">
+            <img src="https://pixabay.com/get/g0435752fe3da7294647a68b253c4c52ea33f8469db776061ed77a7c7089c847a1ae0ea8a24ae86aad62df7ca5377aa7bdbf1828af9890680ddcfb42727b3c71e_640.jpg" alt="Croissant" class="w-28 h-20 object-cover rounded-md" />
+            <div>
+              <h3 class="font-semibold">Butter Croissant <span class="text-gray-600">₹120</span></h3>
+              <p class="text-sm text-gray-700">Flaky, buttery, baked fresh daily.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white p-4 rounded-lg shadow">
+          <div class="flex gap-4">
+            <img src="https://images.pexels.com/photos/90608/pexels-photo-90608.png?auto=compress&cs=tinysrgb&h=650&w=940" alt="Blueberry muffin" class="w-28 h-20 object-cover rounded-md" />
+            <div>
+              <h3 class="font-semibold">Blueberry Muffin <span class="text-gray-600">₹110</span></h3>
+              <p class="text-sm text-gray-700">Soft, sweet, with burst of blueberry.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Seasonal Specials -->
+    <section>
+      <h2 class="text-2xl mb-4" style="font-family: 'Playfair Display', serif;">Seasonal Specials</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <article class="bg-white p-4 rounded-lg shadow">
+          <div class="flex gap-4">
+            <img src="https://images.unsplash.com/photo-1566892972120-e05b15eb16aa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw5fHxjYXJkYW1vbSUyMHNwaWNlZCUyMGxhdHRlfGVufDB8MHx8fDE3NTcwNzk3Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Cardamom spiced latte" class="w-28 h-20 object-cover rounded-md" />
+            <div>
+              <h3 class="font-semibold">Cardamom Spiced Latte <span class="text-gray-600">₹220</span></h3>
+              <p class="text-sm text-gray-700">A seasonal favorite with warm spices.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-stone-800 text-gray-300 py-6 text-center">&copy; 2025 Brew Haven — Hyderabad, Telangana</footer>
+</body>
+</html> 
