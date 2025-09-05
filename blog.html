@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" class="antialiased">
+<head>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Blog — Brew Haven</title>
+  <meta name="description" content="Brew Haven blog — brewing tips, events, and seasonal announcements from our Hyderabad cafe.">
+  <script> tailwind = { config: { theme: { extend: { colors: { 'brew-brown': '#3b2f2f', 'brew-cream': '#f6efe6', 'brew-beige': '#dccdb3', 'brew-green': '#7b936f' } } } } </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-brew-cream text-brew-brown min-h-screen" style="font-family: 'Inter', sans-serif;">
+  <header class="bg-white/60 sticky top-0 border-b">
+    <nav class="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" style="font-family: 'Playfair Display', serif;">Brew Haven</a>
+      <div class="hidden md:flex gap-6">
+        <a href="menu.html">Menu</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-screen-xl mx-auto px-6 py-12">
+    <h1 class="text-3xl mb-6" style="font-family: 'Pacifico', cursive;">From the Brew Bar</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Post 1 -->
+      <article class="bg-white rounded-lg shadow p-4">
+        <img src="https://pixabay.com/get/gb5b3741d8813df6d34777060a984a3279307b665ef5ccaecbe7de8310a775fe17003b9d047bae8779f66be9f90b410479d175ac74e5a6d0bbd0f5a44b89e2e31_640.jpg" alt="Pour over brewing" class="w-full h-44 object-cover rounded-md" />
+        <h3 class="mt-3 font-semibold">How to Brew a Clean Pour-over at Home</h3>
+        <p class="text-sm text-gray-700 mt-2">A quick guide to water ratios, bloom times, and grind settings to get the best cup.</p>
+        <a href="#" class="text-brew-green mt-3 inline-block">Read more →</a>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="bg-white rounded-lg shadow p-4">
+        <img src="https://images.unsplash.com/photo-1737957484350-93fd8d56a9c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHwxMHx8c2Vhc29uYWwlMjBiZWFucyUyMGhhcnZlc3R8ZW58MHwwfHx8MTc1NzA3OTc0Mnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Seasonal beans harvest" class="w-full h-44 object-cover rounded-md" />
+        <h3 class="mt-3 font-semibold">New Seasonal Beans: Tasting Notes</h3>
+        <p class="text-sm text-gray-700 mt-2">Discover our latest single-origin release and tasting events at the café.</p>
+        <a href="#" class="text-brew-green mt-3 inline-block">Read more →</a>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="bg-stone-800 text-gray-300 py-6 text-center">&copy; 2025 Brew Haven — Hyderabad, Telangana</footer>
+</body>
+</html> 
